@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sneha.css">
+    <title>Weather Data</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Inside each box -->
+
+    <div class="container" id="weather-container">
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+        <div class="box">
+            <h2 class="days"></h2>
+            <p class="data-item date"></p>
+            <p class="data-item city"></p>
+            
+            <div class="data-item temperature">
+                <i class="fas fa-thermometer-half"></i> Temperature:
+                <span class="value"></span>
+            </div>
+            <div class="data-item humidity">
+                <i class="fas fa-tint"></i> Humidity:
+                <span class="value"></span>
+            </div>
+            <div class="data-item pressure">
+                <i class="fas fa-compress"></i> Pressure:
+                <span class="value"></span>
+            </div>
+            
+            <div class="weather-icon"></div>
+            <p class="weather-description"></p>
+        </div>
+
+        
+    </div>
+
+    <script>
+    function fetchDataAndPopulate() {
+        fetch('display.php')
+        .then(response => response.json())
+        .then(data => {
+            const weatherContainers = document.querySelectorAll('.box');
+
+            data.forEach((day, index) => {
+                const weatherContainer = weatherContainers[index];
+                weatherContainer.querySelector('.days').textContent = day.Day;
+                weatherContainer.querySelector('.data-item.date').textContent = `Date: ${day.Date}`;
+                weatherContainer.querySelector('.data-item.city').textContent = `City: ${day.City}`;
+
+                const tempData = weatherContainer.querySelector('.data-item.temperature');
+                if (day.Temperature !== undefined) {
+                    tempData.innerHTML = `Temperature: ${day.Temperature}°C`;
+                } else {
+                    tempData.textContent = '';
+                }
+
+                const humData = weatherContainer.querySelector('.data-item.humidity');
+                if (day.Humidity !== undefined) {
+                    humData.innerHTML = `Humidity: ${day.Humidity}%`;
+                } else {
+                    humData.textContent = '';
+                }
+
+                const pressureData = weatherContainer.querySelector('.data-item.pressure');
+                if (day.Pressure !== undefined) {
+                    pressureData.innerHTML = `Pressure: ${day.Pressure} hPa`;
+                } else {
+                    pressureData.textContent = 'No data available';
+                }
+
+                const iconContainer = weatherContainer.querySelector('.weather-icon');
+                if (day.Icon !== undefined) {
+                    const iconImg = document.createElement('img');
+                    iconImg.src = `http://openweathermap.org/img/w/${day.Icon}.png`;
+                    iconContainer.innerHTML = ''; // Clear previous content
+                    iconContainer.appendChild(iconImg);
+                } else {
+                    iconContainer.innerHTML = '';
+                }
+
+                const descriptionParagraph = weatherContainer.querySelector('.weather-description');
+                if (day.Weather_Description !== undefined) {
+                    descriptionParagraph.textContent = day.Weather_Description;
+                } else {
+                    descriptionParagraph.textContent = '';
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+
+    fetchDataAndPopulate();
+    setInterval(fetchDataAndPopulate, 600000); // 600000 milliseconds = 10 minutes
+
+    </script>
+
+   
+</body>
+</html>

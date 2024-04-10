@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Data</title>
+</head>
+<body>
+    <div id="weather-data-container">
+        <!-- Weather data will be displayed here -->
+    </div>
+
+    <!-- Add the JavaScript code -->
+    <script>
+        // Fetch weather data and display it
+        function fetchAndDisplayWeatherData() {
+            const queryParams = new URLSearchParams(window.location.search);
+            const city = queryParams.get("city");
+            const apiUrl = `index.php?city=${encodeURIComponent(city)}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the data and display it in the weather-data-container
+                    const weatherDataContainer = document.getElementById("weather-data-container");
+                    weatherDataContainer.innerHTML = "";
+
+                    data.forEach(dayData => {
+                        const div = document.createElement("div");
+                        div.innerHTML = `
+                            <h2>${dayData.CityName}</h2>
+                            <p>Temperature: ${dayData.Temperature}</p>
+                            <p>Humidity: ${dayData.Humidity}</p>
+                            <p>Date and Time: ${dayData.DateTime}</p>
+                            <hr>
+                        `;
+                        weatherDataContainer.appendChild(div);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                });
+        }
+
+        // Call the fetchAndDisplayWeatherData function when the page loads
+        document.addEventListener("DOMContentLoaded", fetchAndDisplayWeatherData);
+    </script>
+</body>
+</html>

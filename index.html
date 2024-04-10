@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>My weather app</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+
+
+      <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo-container">
+        <a href="index.html" class="logo">
+            <img src="./images/logo.png" width="150" height="120" alt="logo">
+        </a>
+    </div>
+    <div class="search">
+        <input type="text" class="search-bar" placeholder="City name" id="searchbar" autocomplete="off">
+        <button class="click" id="searchButton" onclick="toggleSearchBar()">
+            <i class="fas fa-search icon" id="submitb"></i>
+        </button>
+    </div>
+</div>
+
+        
+        
+    </div>
+    <div class="container flex" >
+            <div class="box">
+                <div class="weather">
+                    <div class="first-three">
+                        <h2 class="title-2 now">Now</h2>
+                        <div class="temp-container">
+                            <p class="temp">51&deg</p>
+                            <img src="https://openweathermap.org/img/wn/04n@2x.png" width="80px"  height="80px" id="icon">
+                        </div>
+                        <p id="rain"></p><hr>
+                        <div class="date-container">
+                            <span class="m-icon">calendar_today</span>
+                            <p id="date"></p>
+                        </div>
+                        <div class="city-name">
+                            <span class="m-icon">location_on</span>
+                            <p class="name">City</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+            <div class="last">
+                <h2 class="title-2" id="highlights-label">Today's Highlights</h2>
+                <div class="new">
+
+                    <!-- Wind Speed card -->
+                <div class="highlight-card">
+                  <h3 class="body-3 side">Wind Speed</h3>
+                  <div class="icon-result-container ">
+                    <span class="m-icon">air</span>
+                    <p class="wind body-1"></p>
+                  </div>
+                  <div class="icon-result-container">
+                    <span class="m-icon">near_me</span>
+                    <p class="direction body-1"></p>
+                  </div>
+                </div>
+
+                 <!-- Pressure card -->
+               <div class="highlight-card">
+                <h3 class="body-3 side">Pressure</h3>
+                <div class="icon-result-container">
+                  <span class="m-icon">scale</span>
+                  <p class="pressure body-1" id="pressure-value"></p>
+                </div>
+              </div>
+              
+                <!-- Humidity card -->
+                <div class="highlight-card">
+                  <h3 class="body-3 side">Humidity</h3>
+                  <div class="icon-result-container">
+                    <span class="m-icon">humidity_percentage</span>
+                    <p class="humm body-1"></p>
+                  </div>
+                </div>
+              
+                <!-- Visibility card -->
+                <div class="highlight-card">
+                  <h3 class="body-3 side">Visibility</h3>
+                  <div class="icon-result-container">
+                    <span class="m-icon">visibility</span>
+                    <p class="visibility body-1"></p>
+                  </div>
+                </div>
+              
+              
+                </div>
+                </div>
+    </div>
+    <div class="more-data">
+      <a class="lookdata" href="new.html">
+          View Full Data
+          <span class="m">&rarr;</span>
+      </a>
+  </div>
+  
+  
+  
+    <script src="text.js"></script>
+</body>
+</html>
